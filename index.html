@@ -27,8 +27,11 @@
             <button onclick="addToDisplay('.')">.</button>
             <button onclick="calculated('=')">=</button>
             <button class="btn" onclick="clear1('')">c</button>
+            <button class="btn" onclick="clearHistory('')">h</button>
 
         </div>
+        <div id="history"></div>
+
 
     </div>
     <script>
@@ -36,9 +39,14 @@
         function addToDisplay(input) {
             display.value += input;
         }
+        let history=[];
         function calculated(){
             try{ 
-                 display.value = eval(display.value)
+                let expression = display.value
+                 let results = eval(expression)
+                 display.value=results;
+                 history.push(expression + "="+results)
+                 showHistory();
                 }catch(error){
                     display.value="srinadh"
                 }
@@ -47,6 +55,18 @@
            
 
         }
+        function showHistory(){
+            let historyDiv=document.getElementById("history")
+            historyDiv.innerHTML="";
+            history.forEach(item => {
+                let p = document.createElement("p")
+                p.innerText=item;
+                historyDiv.appendChild(p);
+            })
+            
+        }
+        showHistory();
+
         function clear1(){
             display.value =" ";
         }
