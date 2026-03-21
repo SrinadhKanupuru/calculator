@@ -37,6 +37,8 @@ button{
     font-size: 19px;
     font-weight: 600;
     cursor: pointer;
+    transform: all 0.2s ease;
+
     
    
 }
@@ -45,6 +47,7 @@ button:hover{
 
 }
 button:active{
+    transform: scale(0.9);
     background-color: hsl(0, 0%, 50%);
 
 }
@@ -56,4 +59,7 @@ button:active{
 }
 .btn:active{
     background-color: orange;
+}
+#history{
+    color: white;
 }
